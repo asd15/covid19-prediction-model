@@ -1,2 +1,2 @@
-# covid19-prediction
 Built a covid19 application which will display the new cases, recoveries and deaths in India state wise it will also predict the same for upcoming days. The application also consists of a very simple predicting if a person is suffering from covid19 virus by adjusting the symptoms. The application is created in python with libraries like streamlit, statsmodels, pandas, matplotlib, sklearn and pickle. I loved working on Streamlit. It is a latest and awesome library for machine learning enthusiasts, it makes most of the work pretty easy.
+First run the symptoms-model then run the covid-app.
