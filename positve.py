@@ -10,6 +10,7 @@ from constants import states
 def format_func(option):
     return states[option]
 
+
 st.cache()
 
 

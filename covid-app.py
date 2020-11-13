@@ -8,9 +8,9 @@ from positve import positive_display
 from recovered import recovered_display
 from deaths import deaths_display
 from symptoms import symptoms_display
+from compare import compare_display
 
-
-page = {'Map', 'Recovered', 'Deaths', 'Positive Cases', 'Symptoms', 'Thank you!'}
+page = {'Map', 'Recovered', 'Deaths', 'Positive Cases', 'Symptoms', 'Compare States', 'Thank you!'}
 
 st.sidebar.header('Select Input')
 
@@ -25,8 +25,9 @@ elif sel_page == 'Recovered':
     recovered_display()
 elif sel_page == 'Deaths':
     deaths_display()
+elif sel_page == 'Compare States':
+    compare_display()
 elif sel_page == 'Thank you!':
-    st.balloons()
     st.balloons()
     st.balloons()
     st.header('Thank you for watching!')
@@ -55,13 +56,16 @@ elif sel_page == 'Symptoms':
     prediction = load_clf.predict(df)
     prediction_prob = load_clf.predict_proba(df)
 
-    st.subheader('Prediction')
+    st.header('Prediction')
     virus_symptoms = np.array(['NO', 'YES'])
-    st.write(virus_symptoms[prediction])
+    yes_no = ''.join(virus_symptoms[prediction])
+    if yes_no == "YES":
+        st.subheader('NO probably you are not suffering from covid.')
+    elif yes_no == "NO":
+        st.subheader('YES probably you are suffering from covid.')
 
-    st.subheader('Prediction Probability')
-    st.write(prediction_prob)
-
-
-
-
+    st.header('Prediction Probability')
+    st.subheader('Probability of YES is: ')
+    st.subheader(prediction_prob[0][0])
+    st.subheader('Probability of NO is: ')
+    st.subheader(prediction_prob[0][1])

@@ -20,6 +20,7 @@ def map_display():
     map_df['State'] = df['State']
     map_df['Active'] = df['Confirmed'].map(int) - (df['Recovered'].map(int) + df['Deaths'].map(int))
     map_df['Active'] = map_df['Active'].map(int)
+    map_df = map_df.sort_values(by='Active', ascending=False)
 
     map_data = gpd.read_file('Indian_States.shp')
     map_data.rename(columns={'st_nm': 'State'}, inplace = True)
