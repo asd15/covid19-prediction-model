@@ -13,7 +13,7 @@ def compare_display():
       # Covid19 Prediction App
       This page **compares** the **New cases** between each state suffering from the virus in India!
       """)
-    df = pd.read_csv('state_wise_daily.csv')
+    df = pd.read_csv('https://api.covid19india.org/csv/latest/state_wise_daily.csv')
     df['Date'] = df['Date'].replace('Sept', 'Sep', regex=True)
     df['Date'] = pd.to_datetime(df['Date'], format="%d-%b-%y")
     df = df.set_index('Status')
