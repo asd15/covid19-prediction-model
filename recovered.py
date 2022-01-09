@@ -19,6 +19,7 @@ def recovered_display():
     df = pd.read_csv('https://data.covid19bharat.org/csv/latest/state_wise_daily.csv')
     df['Date'] = df['Date'].replace('Sept', 'Sep', regex=True)
     df['Date'] = pd.to_datetime(df['Date'], format="%d-%b-%y")
+    df['MH'] = df['MH'].abs()
     df = df.set_index('Status')
     df.drop(['Confirmed', 'Deceased'], inplace=True)
     df = df.reset_index()
