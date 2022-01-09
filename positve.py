@@ -22,12 +22,12 @@ def positive_display():
     df = pd.read_csv('https://data.covid19bharat.org/csv/latest/state_wise_daily.csv')
     df['Date'] = df['Date'].replace('Sept', 'Sep', regex=True)
     df['Date'] = pd.to_datetime(df['Date'], format="%d-%b-%y")
+    df['MH'] = df['MH'].abs()
     df = df.set_index('Status')
     df.drop(['Recovered', 'Deceased'], inplace=True)
     df = df.reset_index()
     og_df = df
     og_df = og_df.set_index('Date')
-    og_df['Confirmed'] = og_df['Confirmed'].abs()
     state = st.sidebar.selectbox('State', options=list(states.keys()), format_func=format_func)
     date_sel = st.sidebar.slider('Number of Days to Predict', 1, 60, 15)
     sel_state = format_func(state)
