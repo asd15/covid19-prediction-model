@@ -5,7 +5,7 @@ import geopandas as gpd
 
 st.cache()
 def map_display():
-    df = pd.read_csv('https://api.covid19india.org/csv/latest/state_wise.csv')
+    df = pd.read_csv('https://data.covid19bharat.org/csv/latest/state_wise.csv')
     df = df.set_index('State')
     df.drop(['Total', 'State Unassigned'], inplace=True)
     df.sort_values(by=['State'], inplace=True)
