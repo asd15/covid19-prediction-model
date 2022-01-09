@@ -15,7 +15,7 @@ def deaths_display():
             # Covid19 Prediction App
             This page predicts the **Deaths** from the virus in India!
             """)
-    df = pd.read_csv('https://api.covid19india.org/csv/latest/state_wise_daily.csv')
+    df = pd.read_csv('https://data.covid19bharat.org/csv/latest/state_wise_daily.csv')
     df['Date'] = df['Date'].replace('Sept', 'Sep', regex=True)
     df['Date'] = pd.to_datetime(df['Date'], format="%d-%b-%y")
     df = df.set_index('Status')
